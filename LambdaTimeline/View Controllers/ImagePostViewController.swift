@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import CoreImage
 
 class ImagePostViewController: ShiftableViewController {
     
@@ -25,6 +26,10 @@ class ImagePostViewController: ShiftableViewController {
     @IBOutlet weak var brightnessSlider: UISlider!
     @IBOutlet weak var contrastSlider: UISlider!
     @IBOutlet weak var saturationSlider: UISlider!
+    
+    @IBOutlet weak var blurSlider: UISlider!
+    
+    
     
     //taking original image to make it smaller and easier to manupulate while making changes for its preview
     var originalimage: UIImage? {
@@ -51,7 +56,8 @@ class ImagePostViewController: ShiftableViewController {
     
     private let context = CIContext(options: nil)
     private let filter = CIFilter(name: "CIColorControls")!
-    
+    private let filter1 = CIFilter(name: "CIPhotoEffectNoir")!
+    private let filter2 = CIFilter(name: "CIColorInvert")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,6 +175,19 @@ class ImagePostViewController: ShiftableViewController {
         self.updateImage()
     }
     
+    @IBAction func noirEffect(_ sender: Any) {
+        if let image = self.imageView.image {
+            imageView.image = self.imageEffectNoir(byFiltering: image)
+        }
+    }
+    
+    @IBAction func colorInvert(_ sender: Any) {
+        if let image = self.imageView.image {
+            imageView.image = self.imageEffectInvert(byFiltering: image)
+        }
+    }
+    
+    
     private func updateImage() {
         if let scaledImage = self.scaledImage {
             imageView.image = self.image(byFiltering: scaledImage)
@@ -176,6 +195,7 @@ class ImagePostViewController: ShiftableViewController {
             imageView.image = nil
         }
     }
+
     
     private func image(byFiltering image: UIImage) -> UIImage {
         
@@ -190,10 +210,47 @@ class ImagePostViewController: ShiftableViewController {
         filter.setValue(saturationSlider.value, forKey: "inputSaturation")  //set the saturationSlider to have inputSaturation
         filter.setValue(brightnessSlider.value, forKey: "inputBrightness") // set the brightnessSlider to have inputBrightness
         filter.setValue(contrastSlider.value, forKey: "inputContrast") // set the contrastSlider to hvae inputContrast
-        
+
         // the metadata to be processed. not the actual filtered image
         //ciimage -> cgimage -> uiimage
         guard let outputCIImage = filter.outputImage else {return image}
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {return image}
+        return UIImage(cgImage: outputCGImage)
+    }
+    
+    
+    private func imageEffectNoir(byFiltering image: UIImage) -> UIImage {
+        
+        //this will take scaledImage
+        
+        //uiimage -> cgimage -> ciimage
+        guard let cgImage = image.cgImage else {return image}  //cgImage can be used from UIImage
+        let ciImage = CIImage(cgImage: cgImage)
+        
+        //Set the values of the filter's paremeters
+        filter1.setValue(ciImage, forKey: kCIInputImageKey)  //take the image
+        
+        // the metadata to be processed. not the actual filtered image
+        //ciimage -> cgimage -> uiimage
+        guard let outputCIImage = filter1.outputImage else {return image}
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {return image}
+        return UIImage(cgImage: outputCGImage)
+    }
+    
+    private func imageEffectInvert(byFiltering image: UIImage) -> UIImage {
+        
+        //this will take scaledImage
+        
+        //uiimage -> cgimage -> ciimage
+        guard let cgImage = image.cgImage else {return image}  //cgImage can be used from UIImage
+        let ciImage = CIImage(cgImage: cgImage)
+        
+        //Set the values of the filter's paremeters
+        filter2.setValue(ciImage, forKey: kCIInputImageKey)  //take the image
+        
+        // the metadata to be processed. not the actual filtered image
+        //ciimage -> cgimage -> uiimage
+        guard let outputCIImage = filter2.outputImage else {return image}
         guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {return image}
         return UIImage(cgImage: outputCGImage)
     }
@@ -220,9 +277,6 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    
-    //slider actions
     
     
 }
