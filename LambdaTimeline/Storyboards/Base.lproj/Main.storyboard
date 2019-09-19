@@ -155,7 +155,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y95-ww-Xpd">
-                                        <rect key="frame" x="15" y="418" width="345" height="100"/>
+                                        <rect key="frame" x="15" y="418" width="345" height="135"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="76" translatesAutoresizingMaskIntoConstraints="NO" id="bdE-3o-ltC">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
@@ -208,24 +208,27 @@
                                                     </slider>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Gh-xM-K0A">
+                                                <rect key="frame" x="0.0" y="105" width="345" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-V0-2Zl">
+                                                        <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
+                                                        <state key="normal" title="NoirEffect"/>
+                                                        <connections>
+                                                            <action selector="noirEffect:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="2DN-V2-tWh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDf-Gd-5nq">
+                                                        <rect key="frame" x="271" y="0.0" width="74" height="30"/>
+                                                        <state key="normal" title="colorInvert"/>
+                                                        <connections>
+                                                            <action selector="colorInvert:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="LpF-TW-1P9"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-V0-2Zl">
-                                        <rect key="frame" x="26" y="536" width="70" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="NoirEffect"/>
-                                        <connections>
-                                            <action selector="noirEffect:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="2DN-V2-tWh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDf-Gd-5nq">
-                                        <rect key="frame" x="124" y="536" width="74" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="colorInvert"/>
-                                        <connections>
-                                            <action selector="colorInvert:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="LpF-TW-1P9"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PkI-rS-ua9" secondAttribute="trailing" id="1cC-FG-cAC"/>
@@ -261,6 +264,7 @@
                         <outlet property="brightnessSlider" destination="X3O-vP-wgW" id="llk-A7-M1S"/>
                         <outlet property="chooseImageButton" destination="VxD-cu-jHT" id="KVs-no-MbU"/>
                         <outlet property="contrastSlider" destination="sgl-wQ-cfc" id="ArK-sX-T6i"/>
+                        <outlet property="filterStackView" destination="y95-ww-Xpd" id="S2C-wK-aUg"/>
                         <outlet property="imageHeightConstraint" destination="MHD-wr-Gq9" id="HyG-8g-Ck1"/>
                         <outlet property="imageView" destination="4eK-5F-H5h" id="e7m-c5-Xhz"/>
                         <outlet property="postButton" destination="hsH-Uv-tug" id="ZBn-KE-cpU"/>

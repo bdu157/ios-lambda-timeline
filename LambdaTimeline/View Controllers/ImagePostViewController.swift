@@ -27,8 +27,7 @@ class ImagePostViewController: ShiftableViewController {
     @IBOutlet weak var contrastSlider: UISlider!
     @IBOutlet weak var saturationSlider: UISlider!
     
-    @IBOutlet weak var blurSlider: UISlider!
-    
+    @IBOutlet weak var filterStackView: UIStackView!
     
     
     //taking original image to make it smaller and easier to manupulate while making changes for its preview
@@ -58,6 +57,16 @@ class ImagePostViewController: ShiftableViewController {
     private let filter = CIFilter(name: "CIColorControls")!
     private let filter1 = CIFilter(name: "CIPhotoEffectNoir")!
     private let filter2 = CIFilter(name: "CIColorInvert")!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let _ = imageView.image {
+            self.filterStackView.isHidden = false
+        } else {
+            self.filterStackView.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,9 +191,8 @@ class ImagePostViewController: ShiftableViewController {
     }
     
     @IBAction func colorInvert(_ sender: Any) {
-        if let image = self.imageView.image {
+        guard let image = self.imageView.image else {return}
             imageView.image = self.imageEffectInvert(byFiltering: image)
-        }
     }
     
     
