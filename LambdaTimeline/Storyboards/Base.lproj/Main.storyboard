@@ -455,10 +455,28 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="recordButtonTapped:" destination="jh1-jk-0A1" eventType="touchUpInside" id="hVc-Y6-QQZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDQ-WS-Lmf">
                                         <rect key="frame" x="0.0" y="44" width="275" height="34"/>
                                         <color key="backgroundColor" red="0.22911491989999999" green="0.36905968189999999" blue="0.54345977310000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Play"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="playRecordedFile:" destination="jh1-jk-0A1" eventType="touchUpInside" id="RMF-dp-ip3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlj-Of-SCB">
+                                        <rect key="frame" x="0.0" y="88" width="275" height="34"/>
+                                        <color key="backgroundColor" red="0.51946735379999998" green="0.75967764849999997" blue="0.99994891880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Cancel"/>
@@ -467,18 +485,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlj-Of-SCB">
-                                        <rect key="frame" x="0.0" y="88" width="275" height="34"/>
-                                        <color key="backgroundColor" red="0.51946735379999998" green="0.75967764849999997" blue="0.99994891880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Send"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="jh1-jk-0A1" eventType="touchUpInside" id="eBC-M0-a5u"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -492,6 +501,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6bT-gy-441"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="vlj-Of-SCB" id="9Uo-Dq-k4g"/>
+                        <outlet property="recordButton" destination="NeV-Sz-6CL" id="06b-HB-W9V"/>
+                        <outlet property="sendButton" destination="gDQ-WS-Lmf" id="nLY-8a-wNp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvo-Lg-0IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
