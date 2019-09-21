@@ -185,16 +185,20 @@ class ImagePostViewController: ShiftableViewController {
     }
     
     @IBAction func noirEffect(_ sender: Any) {
-        if let image = self.imageView.image {
-            imageView.image = self.imageEffectNoir(byFiltering: image)
+        if let scaledImage = self.scaledImage {
+            self.imageView.image = self.imageEffectNoir(byFiltering: scaledImage)
+        } else {
+            self.imageView.image = nil
         }
     }
     
     @IBAction func colorInvert(_ sender: Any) {
-        guard let image = self.imageView.image else {return}
-            imageView.image = self.imageEffectInvert(byFiltering: image)
+        if let scaledImage = self.scaledImage {
+            self.imageView.image = self.imageEffectInvert(byFiltering: scaledImage)
+        } else {
+            self.imageView.image = nil
+        }
     }
-    
     
     private func updateImage() {
         if let scaledImage = self.scaledImage {
@@ -203,7 +207,6 @@ class ImagePostViewController: ShiftableViewController {
             imageView.image = nil
         }
     }
-
     
     private func image(byFiltering image: UIImage) -> UIImage {
         
@@ -218,8 +221,9 @@ class ImagePostViewController: ShiftableViewController {
         filter.setValue(saturationSlider.value, forKey: "inputSaturation")  //set the saturationSlider to have inputSaturation
         filter.setValue(brightnessSlider.value, forKey: "inputBrightness") // set the brightnessSlider to have inputBrightness
         filter.setValue(contrastSlider.value, forKey: "inputContrast") // set the contrastSlider to hvae inputContrast
-
         // the metadata to be processed. not the actual filtered image
+        //filter1.setValue(filter.outputImage, forKey: kCIInputImageKey)
+        
         //ciimage -> cgimage -> uiimage
         guard let outputCIImage = filter.outputImage else {return image}
         guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {return image}
@@ -228,15 +232,10 @@ class ImagePostViewController: ShiftableViewController {
     
     
     private func imageEffectNoir(byFiltering image: UIImage) -> UIImage {
-        
-        //this will take scaledImage
-        
-        //uiimage -> cgimage -> ciimage
-        guard let cgImage = image.cgImage else {return image}  //cgImage can be used from UIImage
-        let ciImage = CIImage(cgImage: cgImage)
+
         
         //Set the values of the filter's paremeters
-        filter1.setValue(ciImage, forKey: kCIInputImageKey)  //take the image
+        filter1.setValue(filter.outputImage, forKey: kCIInputImageKey)  //take the image
         
         // the metadata to be processed. not the actual filtered image
         //ciimage -> cgimage -> uiimage
@@ -247,14 +246,8 @@ class ImagePostViewController: ShiftableViewController {
     
     private func imageEffectInvert(byFiltering image: UIImage) -> UIImage {
         
-        //this will take scaledImage
-        
-        //uiimage -> cgimage -> ciimage
-        guard let cgImage = image.cgImage else {return image}  //cgImage can be used from UIImage
-        let ciImage = CIImage(cgImage: cgImage)
-        
         //Set the values of the filter's paremeters
-        filter2.setValue(ciImage, forKey: kCIInputImageKey)  //take the image
+        filter2.setValue(filter1.outputImage, forKey: kCIInputImageKey)  //take the image
         
         // the metadata to be processed. not the actual filtered image
         //ciimage -> cgimage -> uiimage

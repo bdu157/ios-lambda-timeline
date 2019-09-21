@@ -211,14 +211,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Gh-xM-K0A">
                                                 <rect key="frame" x="0.0" y="105" width="345" height="30"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-V0-2Zl">
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-V0-2Zl">
                                                         <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
                                                         <state key="normal" title="NoirEffect"/>
                                                         <connections>
                                                             <action selector="noirEffect:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="2DN-V2-tWh"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDf-Gd-5nq">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDf-Gd-5nq">
                                                         <rect key="frame" x="271" y="0.0" width="74" height="30"/>
                                                         <state key="normal" title="colorInvert"/>
                                                         <connections>
