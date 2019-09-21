@@ -52,9 +52,16 @@ class ImagePostDetailTableViewController: UITableViewController {
             }
         }
         
+        //adding an audio comment option to go to another VC so user can record comments
+        let addAudioCommentAction = UIAlertAction(title: "Or Add Audio Comment", style: .default) { (_) in
+            self.performSegue(withIdentifier: "ToAddAudioComment", sender: self)
+        }
+        
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addAction(addCommentAction)
+        alert.addAction(addAudioCommentAction)
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
