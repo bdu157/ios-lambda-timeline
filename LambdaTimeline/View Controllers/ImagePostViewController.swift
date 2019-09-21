@@ -8,8 +8,65 @@
 
 import UIKit
 import Photos
+import CoreImage
 
 class ImagePostViewController: ShiftableViewController {
+    
+    var postController: PostController!
+    var post: Post?
+    var imageData: Data?
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var chooseImageButton: UIButton!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var postButton: UIBarButtonItem!
+    
+    //slider outlets
+    @IBOutlet weak var brightnessSlider: UISlider!
+    @IBOutlet weak var contrastSlider: UISlider!
+    @IBOutlet weak var saturationSlider: UISlider!
+    
+    @IBOutlet weak var filterStackView: UIStackView!
+    
+    
+    //taking original image to make it smaller and easier to manupulate while making changes for its preview
+    var originalimage: UIImage? {
+        didSet {
+            guard let originalImage = self.originalimage else {return} //once we selected image we run it
+            
+            //height and width
+            var scaledSize = imageView.bounds.size
+            
+            // 1x, 2x, 3x(10x max)
+            let scale = UIScreen.main.scale  //screen size based on user's device
+            
+            scaledSize = CGSize(width: scaledSize.width * scale, height: scaledSize.height * scale)
+            
+            self.scaledImage = originalImage.imageByScaling(toSize: scaledSize) //when originalimage gets available then make scaledImage
+        }
+    }
+    
+    var scaledImage: UIImage? {
+        didSet {
+            self.updateImage()
+        }
+    }
+    
+    private let context = CIContext(options: nil)
+    private let filter = CIFilter(name: "CIColorControls")!
+    private let filter1 = CIFilter(name: "CIPhotoEffectNoir")!
+    private let filter2 = CIFilter(name: "CIColorInvert")!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let _ = imageView.image {
+            self.filterStackView.isHidden = false
+        } else {
+            self.filterStackView.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +105,7 @@ class ImagePostViewController: ShiftableViewController {
         imagePicker.delegate = self
         
         imagePicker.sourceType = .photoLibrary
-
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -58,8 +115,8 @@ class ImagePostViewController: ShiftableViewController {
         
         guard let imageData = imageView.image?.jpegData(compressionQuality: 0.1),
             let title = titleTextField.text, title != "" else {
-            presentInformationalAlertController(title: "Uh-oh", message: "Make sure that you add a photo and a caption before posting.")
-            return
+                presentInformationalAlertController(title: "Uh-oh", message: "Make sure that you add a photo and a caption before posting.")
+                return
         }
         
         postController.createPost(with: title, ofType: .image, mediaData: imageData, ratio: imageView.image?.ratio) { (success) in
@@ -112,28 +169,108 @@ class ImagePostViewController: ShiftableViewController {
         view.layoutSubviews()
     }
     
-    var postController: PostController!
-    var post: Post?
-    var imageData: Data?
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var chooseImageButton: UIButton!
-    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var postButton: UIBarButtonItem!
+    // MARK: - Slider actions
+    
+    @IBAction func brightnessChanged(_ sender: Any) {
+        self.updateImage()
+    }
+    
+    @IBAction func contrastChanged(_ sender: Any) {
+        self.updateImage()
+    }
+    
+    @IBAction func saturationChanged(_ sender: Any) {
+        self.updateImage()
+    }
+    
+    @IBAction func noirEffect(_ sender: Any) {
+        if let scaledImage = self.scaledImage {
+            self.imageView.image = self.imageEffectNoir(byFiltering: scaledImage)
+        } else {
+            self.imageView.image = nil
+        }
+    }
+    
+    @IBAction func colorInvert(_ sender: Any) {
+        if let scaledImage = self.scaledImage {
+            self.imageView.image = self.imageEffectInvert(byFiltering: scaledImage)
+        } else {
+            self.imageView.image = nil
+        }
+    }
+    
+    private func updateImage() {
+        if let scaledImage = self.scaledImage {
+            imageView.image = self.image(byFiltering: scaledImage)
+        } else {
+            imageView.image = nil
+        }
+    }
+    
+    private func image(byFiltering image: UIImage) -> UIImage {
+        
+        //this will take scaledImage
+        
+        //uiimage -> cgimage -> ciimage
+        guard let cgImage = image.cgImage else {return image}  //cgImage can be used from UIImage
+        let ciImage = CIImage(cgImage: cgImage)
+        
+        //Set the values of the filter's paremeters
+        filter.setValue(ciImage, forKey: "inputImage")  //take the image
+        filter.setValue(saturationSlider.value, forKey: "inputSaturation")  //set the saturationSlider to have inputSaturation
+        filter.setValue(brightnessSlider.value, forKey: "inputBrightness") // set the brightnessSlider to have inputBrightness
+        filter.setValue(contrastSlider.value, forKey: "inputContrast") // set the contrastSlider to hvae inputContrast
+        // the metadata to be processed. not the actual filtered image
+        //filter1.setValue(filter.outputImage, forKey: kCIInputImageKey)
+        
+        //ciimage -> cgimage -> uiimage
+        guard let outputCIImage = filter.outputImage else {return image}
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {return image}
+        return UIImage(cgImage: outputCGImage)
+    }
+    
+    
+    private func imageEffectNoir(byFiltering image: UIImage) -> UIImage {
+
+        
+        //Set the values of the filter's paremeters
+        filter1.setValue(filter.outputImage, forKey: kCIInputImageKey)  //take the image
+        
+        // the metadata to be processed. not the actual filtered image
+        //ciimage -> cgimage -> uiimage
+        guard let outputCIImage = filter1.outputImage else {return image}
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {return image}
+        return UIImage(cgImage: outputCGImage)
+    }
+    
+    private func imageEffectInvert(byFiltering image: UIImage) -> UIImage {
+        
+        //Set the values of the filter's paremeters
+        filter2.setValue(filter1.outputImage, forKey: kCIInputImageKey)  //take the image
+        
+        // the metadata to be processed. not the actual filtered image
+        //ciimage -> cgimage -> uiimage
+        guard let outputCIImage = filter2.outputImage else {return image}
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {return image}
+        return UIImage(cgImage: outputCGImage)
+    }
 }
+
+
 
 extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+        
         chooseImageButton.setTitle("", for: [])
         
         picker.dismiss(animated: true, completion: nil)
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
-        imageView.image = image
+        //imageView.image = image
+        self.originalimage = image
         
         setImageViewHeight(with: image.ratio)
     }
@@ -141,4 +278,6 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    
 }
