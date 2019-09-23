@@ -33,6 +33,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>To record audio comments and video post audio</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to allow you to add photos to posts</string>
 	<key>UILaunchStoryboardName</key>

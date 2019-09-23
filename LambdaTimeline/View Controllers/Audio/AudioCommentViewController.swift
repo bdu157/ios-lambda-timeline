@@ -15,10 +15,34 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
-
+    var post: Post!
+    var postController: PostController!
+    
+    var session: AVAudioSession!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        session = AVAudioSession.sharedInstance()
+        
+        do {
+            
+            try session.setCategory(.playAndRecord, mode: .default, options: [])
+            try session.setActive(true)
+            session.requestRecordPermission() { [unowned self] allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                    } else {
+                        self.presentInformationalAlertController(title: "Unable to record audio", message: "Audio recording permissions not granted")
+                    }
+                }
+            }
+        } catch {
+            NSLog("Error with audio record permissions: \(error)")
+            self.presentInformationalAlertController(title: "Unable to record audio", message: "Audio recording failed. Try again.")
+        }
     }
+    
     
     //MARK: RECORDING
     
@@ -30,6 +54,8 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
         return recorder?.isRecording ?? false
     }
     
+    
+    //record button
     @IBAction func recordButtonTapped(_ sender: Any) {
         defer {updateButtons()}
         
@@ -38,10 +64,12 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
             return
         }
         
+        guard let fileURL = self.fileURL else {return}
+        
         do {
             let format = AVAudioFormat(standardFormatWithSampleRate: 44100.0, channels: 2)!
 
-            recorder = try AVAudioRecorder(url: self.newRecordingURL(), format: format)
+            recorder = try AVAudioRecorder(url: fileURL, format: format)
             recorder?.delegate = self
             recorder?.record()
         } catch {
@@ -49,7 +77,7 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
         }
     }
     
-    private func newRecordingURL() -> URL {
+    var fileURL: URL? {
         let fm = FileManager.default
         let documentsDirectory = try! fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return documentsDirectory.appendingPathComponent("caf")
@@ -60,7 +88,31 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
         self.recorder = nil
         self.updateButtons()
     }
+    //MARK: DONE button
     
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        if let fileURL = fileURL,
+            let data = try? Data(contentsOf: fileURL),
+            let post = post {
+            
+            let alert = UIAlertController(title: "do you want to send the comment or cancel the recording?", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Send", style: .default) { (_) in
+                self.postController.addComment(with: data, to: post) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            alert.addAction(action)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
     
     //MARK: PLAYING
     private var player: AVAudioPlayer?
@@ -93,11 +145,11 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
         self.updateButtons()
     }
     
-    
     //MARK: CANCEL
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+        
     }
     
     
@@ -119,5 +171,6 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
+    
     
 }
