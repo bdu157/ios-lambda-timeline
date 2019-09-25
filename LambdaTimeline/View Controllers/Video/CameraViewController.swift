@@ -18,8 +18,6 @@ class CameraViewController: UIViewController {
     var captureSession: AVCaptureSession!
     var recordOutput: AVCaptureMovieFileOutput!
     
-    var fileURL: URL!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,8 +63,8 @@ class CameraViewController: UIViewController {
         } else {
             recordOutput.startRecording(to: self.newRecordingURL(), recordingDelegate: self)
         }
+        
     }
-    
     
     //MARK: private method
     private func bestCamera() -> AVCaptureDevice {
@@ -106,8 +104,6 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         defer {self.updateViews()}
         
-        //photo library part
-        
         PHPhotoLibrary.requestAuthorization { (status) in
             if status != .authorized {
                 NSLog("Please give video recorder access to your photo library")
@@ -127,21 +123,17 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
                 }
             })
         }
-        
-        
     }
     
     private func presentSucessAlert() {
         let alert = UIAlertController(title: "video saved", message: "yeah!!", preferredStyle: .alert)
         let oakyAction = UIAlertAction(title: "okay", style: .default, handler: nil)
-        
-        
-        
         alert.addAction(oakyAction)
         
         let photosAction = UIAlertAction(title: "open photos", style: .default) { (_) in
             UIApplication.shared.open(URL(string: "photos-redirect://")!, options: [:], completionHandler: nil)
         }
+        
         alert.addAction(photosAction)
         self.present(alert, animated: true, completion: nil)
     }
@@ -152,3 +144,4 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
  use AVPlayer to play video
  AVPlayerLayer for
  */
+

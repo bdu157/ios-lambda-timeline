@@ -456,7 +456,7 @@
                         <outlet property="imageViewAspectRatioConstraint" destination="y1B-iX-x3e" id="wIt-kh-Tzd"/>
                         <outlet property="titleLabel" destination="jyy-BX-c2c" id="UEd-xO-ipC"/>
                         <segue destination="jh1-jk-0A1" kind="show" identifier="ToAddAudioComment" id="jnv-93-pLy"/>
-                        <segue destination="BVe-cH-PDK" kind="show" identifier="ToAddVideoComment" id="9V5-7R-Ncp"/>
+                        <segue destination="BVe-cH-PDK" kind="presentation" identifier="showCamera" id="N1U-Ei-gNc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdL-Y3-4ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -565,16 +565,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7E-4B-2X1" customClass="CameraPreviewView" customModule="LambdaTimeline" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pN-q3-96D">
-                                        <rect key="frame" x="157" y="505" width="60" height="54"/>
+                                        <rect key="frame" x="157" y="549" width="60" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="8v0-o7-txD"/>
                                             <constraint firstAttribute="width" constant="60" id="Jvv-sk-KJv"/>
                                         </constraints>
                                         <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button" image="Record"/>
+                                        <connections>
+                                            <action selector="recordButtonTapped:" destination="BVe-cH-PDK" eventType="touchUpInside" id="vLA-yi-0gd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxl-ag-ebS">
                                         <rect key="frame" x="295" y="517" width="32" height="30"/>
@@ -608,7 +611,7 @@
                         <viewLayoutGuide key="safeArea" id="MOa-1D-OlT"/>
                     </view>
                     <connections>
-                        <outlet property="cameraPreviewView" destination="i7E-4B-2X1" id="f3X-Yq-eEm"/>
+                        <outlet property="cameraPreviewView" destination="i7E-4B-2X1" id="SRt-gR-BkK"/>
                         <outlet property="recordButton" destination="4pN-q3-96D" id="axz-Uj-TYc"/>
                     </connections>
                 </viewController>

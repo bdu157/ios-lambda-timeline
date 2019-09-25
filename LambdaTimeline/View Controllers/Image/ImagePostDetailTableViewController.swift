@@ -68,25 +68,25 @@ class ImagePostDetailTableViewController: UITableViewController, AudioCommentTab
         
         let addVideoCommentAction = UIAlertAction(title: "Or Add Video Comment", style: .default) { (_) in
             
-            switch AVCaptureDevice.authorizationStatus(for: .video) {
-            case .authorized:
-                self.showCamera()
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video) { (granter) in
-                    if granter {
-                        DispatchQueue.main.async {
-                            self.showCamera()
+                switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .authorized:
+                    self.showCamera()
+                case .notDetermined:
+                    AVCaptureDevice.requestAccess(for: .video) { (granter) in
+                        if granter {
+                            DispatchQueue.main.async {
+                                self.showCamera()
+                            }
                         }
                     }
+                case .denied:
+                    return
+                case .restricted:
+                    return
+                default:
+                    return
                 }
-            case .denied:
-                return
-            case .restricted:
-                return
-            default:
-                return
             }
-        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -99,7 +99,9 @@ class ImagePostDetailTableViewController: UITableViewController, AudioCommentTab
     }
     
     private func showCamera() {
-        performSegue(withIdentifier: "ToAddVideoComment", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "showCamera", sender: self)
+        }
     }
     
     

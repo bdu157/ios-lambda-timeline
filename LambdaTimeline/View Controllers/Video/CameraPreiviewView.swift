@@ -1,5 +1,5 @@
 //
-//  CameraPreviewView.swift
+//  CameraPreiviewView.swift
 //  LambdaTimeline
 //
 //  Created by Dongwoo Pae on 9/25/19.
@@ -19,3 +19,4 @@ class CameraPreviewView: UIView {  //this will overwrite UIView
         return layer as! AVCaptureVideoPreviewLayer
     }
 }
+

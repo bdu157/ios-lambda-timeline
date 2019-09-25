@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B20EB84233B01CA009B56EA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EB83233B01CA009B56EA /* CameraViewController.swift */; };
-		0B20EB89233B396B009B56EA /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EB88233B396B009B56EA /* CameraPreviewView.swift */; };
+		0B20EBAB233B628A009B56EA /* CameraPreiviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EBAA233B628A009B56EA /* CameraPreiviewView.swift */; };
+		0B20EBAD233B645F009B56EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EBAC233B645F009B56EA /* ViewController.swift */; };
+		0B20EBAF233B66EE009B56EA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EBAE233B66EE009B56EA /* CameraViewController.swift */; };
 		0B28DA812335BD9200B7ED1F /* AudioCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28DA802335BD9200B7ED1F /* AudioCommentViewController.swift */; };
 		0B764F3E2338A72F00D6FAC4 /* FetchAudioCommentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B764F3D2338A72F00D6FAC4 /* FetchAudioCommentOperation.swift */; };
 		0B8CCD482333124400B55F2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B8CCD472333124400B55F2B /* GoogleService-Info.plist */; };
@@ -40,8 +41,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B20EB83233B01CA009B56EA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		0B20EB88233B396B009B56EA /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		0B20EBAA233B628A009B56EA /* CameraPreiviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreiviewView.swift; sourceTree = "<group>"; };
+		0B20EBAC233B645F009B56EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0B20EBAE233B66EE009B56EA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0B28DA802335BD9200B7ED1F /* AudioCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCommentViewController.swift; sourceTree = "<group>"; };
 		0B764F3D2338A72F00D6FAC4 /* FetchAudioCommentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAudioCommentOperation.swift; sourceTree = "<group>"; };
 		0B8CCD472333124400B55F2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -91,8 +93,9 @@
 		0B20EB85233B01CF009B56EA /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				0B20EB83233B01CA009B56EA /* CameraViewController.swift */,
-				0B20EB88233B396B009B56EA /* CameraPreviewView.swift */,
+				0B20EBAA233B628A009B56EA /* CameraPreiviewView.swift */,
+				0B20EBAC233B645F009B56EA /* ViewController.swift */,
+				0B20EBAE233B66EE009B56EA /* CameraViewController.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -395,8 +398,9 @@
 				0BBE3F7E233329E8009EAF8C /* UIImage+Scaling.swift in Sources */,
 				46CFE6FB21714E6100E7FF73 /* Author.swift in Sources */,
 				46CFE6F92170862C00E7FF73 /* ShiftableViewController.swift in Sources */,
-				0B20EB84233B01CA009B56EA /* CameraViewController.swift in Sources */,
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
+				0B20EBAB233B628A009B56EA /* CameraPreiviewView.swift in Sources */,
+				0B20EBAD233B645F009B56EA /* ViewController.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				0BDFF95323375E3F001BEF2F /* AudioCommentsTableViewCell.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,
@@ -406,13 +410,13 @@
 				46D571F32172D43B00E7FF73 /* Cache.swift in Sources */,
 				46CFE7012171559500E7FF73 /* FetchMediaOperation.swift in Sources */,
 				46D571F82173FC2700E7FF73 /* ImagePostDetailTableViewController.swift in Sources */,
+				0B20EBAF233B66EE009B56EA /* CameraViewController.swift in Sources */,
 				46CFE7032171572600E7FF73 /* ImagePostCollectionViewCell.swift in Sources */,
 				4646379C2170091A00E7FF73 /* PostController.swift in Sources */,
 				464637992170048900E7FF73 /* FirebaseConvertible.swift in Sources */,
 				46A0366A21700F5100E7FF73 /* PostsCollectionViewController.swift in Sources */,
 				46D571F52173CF3E00E7FF73 /* UIImage+Ratio.swift in Sources */,
 				0B28DA812335BD9200B7ED1F /* AudioCommentViewController.swift in Sources */,
-				0B20EB89233B396B009B56EA /* CameraPreviewView.swift in Sources */,
 				46463792216FFDD900E7FF73 /* Comment.swift in Sources */,
 				46CFE6F721707FA600E7FF73 /* UIViewController+InformationalAlert.swift in Sources */,
 			);
