@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B20EB84233B01CA009B56EA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EB83233B01CA009B56EA /* CameraViewController.swift */; };
+		0B20EB89233B396B009B56EA /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EB88233B396B009B56EA /* CameraPreviewView.swift */; };
 		0B28DA812335BD9200B7ED1F /* AudioCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B28DA802335BD9200B7ED1F /* AudioCommentViewController.swift */; };
 		0B764F3E2338A72F00D6FAC4 /* FetchAudioCommentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B764F3D2338A72F00D6FAC4 /* FetchAudioCommentOperation.swift */; };
 		0B8CCD482333124400B55F2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B8CCD472333124400B55F2B /* GoogleService-Info.plist */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B20EB83233B01CA009B56EA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		0B20EB88233B396B009B56EA /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		0B28DA802335BD9200B7ED1F /* AudioCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCommentViewController.swift; sourceTree = "<group>"; };
 		0B764F3D2338A72F00D6FAC4 /* FetchAudioCommentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAudioCommentOperation.swift; sourceTree = "<group>"; };
 		0B8CCD472333124400B55F2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B20EB85233B01CF009B56EA /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				0B20EB83233B01CA009B56EA /* CameraViewController.swift */,
+				0B20EB88233B396B009B56EA /* CameraPreviewView.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		0B764F3B23388B2600D6FAC4 /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +199,7 @@
 				46A0366C2170158900E7FF73 /* SignInViewController.swift */,
 				46A0366921700F5100E7FF73 /* PostsCollectionViewController.swift */,
 				0B764F3B23388B2600D6FAC4 /* Image */,
+				0B20EB85233B01CF009B56EA /* Video */,
 				0B764F3C23388B3200D6FAC4 /* Audio */,
 			);
 			path = "View Controllers";
@@ -381,6 +395,7 @@
 				0BBE3F7E233329E8009EAF8C /* UIImage+Scaling.swift in Sources */,
 				46CFE6FB21714E6100E7FF73 /* Author.swift in Sources */,
 				46CFE6F92170862C00E7FF73 /* ShiftableViewController.swift in Sources */,
+				0B20EB84233B01CA009B56EA /* CameraViewController.swift in Sources */,
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				0BDFF95323375E3F001BEF2F /* AudioCommentsTableViewCell.swift in Sources */,
@@ -397,6 +412,7 @@
 				46A0366A21700F5100E7FF73 /* PostsCollectionViewController.swift in Sources */,
 				46D571F52173CF3E00E7FF73 /* UIImage+Ratio.swift in Sources */,
 				0B28DA812335BD9200B7ED1F /* AudioCommentViewController.swift in Sources */,
+				0B20EB89233B396B009B56EA /* CameraPreviewView.swift in Sources */,
 				46463792216FFDD900E7FF73 /* Comment.swift in Sources */,
 				46CFE6F721707FA600E7FF73 /* UIViewController+InformationalAlert.swift in Sources */,
 			);

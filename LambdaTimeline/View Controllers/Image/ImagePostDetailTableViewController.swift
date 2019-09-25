@@ -66,15 +66,42 @@ class ImagePostDetailTableViewController: UITableViewController, AudioCommentTab
             self.performSegue(withIdentifier: "ToAddAudioComment", sender: self)
         }
         
+        let addVideoCommentAction = UIAlertAction(title: "Or Add Video Comment", style: .default) { (_) in
+            
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .authorized:
+                self.showCamera()
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { (granter) in
+                    if granter {
+                        DispatchQueue.main.async {
+                            self.showCamera()
+                        }
+                    }
+                }
+            case .denied:
+                return
+            case .restricted:
+                return
+            default:
+                return
+            }
+        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addAction(addCommentAction)
         alert.addAction(addAudioCommentAction)
+        alert.addAction(addVideoCommentAction)
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
     }
+    
+    private func showCamera() {
+        performSegue(withIdentifier: "ToAddVideoComment", sender: self)
+    }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (post?.comments.count ?? 0) - 1

@@ -408,11 +408,11 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AudioCommentCell" rowHeight="73" id="Sfg-Fu-339" customClass="AudioCommentsTableViewCell" customModule="LambdaTimeline" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="198" width="375" height="73"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AudioCommentCell" rowHeight="68" id="Sfg-Fu-339" customClass="AudioCommentsTableViewCell" customModule="LambdaTimeline" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="198" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sfg-Fu-339" id="GCg-Un-ReC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYC-53-kyJ">
@@ -456,6 +456,7 @@
                         <outlet property="imageViewAspectRatioConstraint" destination="y1B-iX-x3e" id="wIt-kh-Tzd"/>
                         <outlet property="titleLabel" destination="jyy-BX-c2c" id="UEd-xO-ipC"/>
                         <segue destination="jh1-jk-0A1" kind="show" identifier="ToAddAudioComment" id="jnv-93-pLy"/>
+                        <segue destination="BVe-cH-PDK" kind="show" identifier="ToAddVideoComment" id="9V5-7R-Ncp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdL-Y3-4ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -553,7 +554,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvo-Lg-0IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2729" y="473"/>
+            <point key="canvasLocation" x="2951" y="163"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="bJI-zZ-2GF">
+            <objects>
+                <viewController id="BVe-cH-PDK" customClass="CameraViewController" customModule="LambdaTimeline" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Du-ay-3QQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7E-4B-2X1" customClass="CameraPreviewView" customModule="LambdaTimeline" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pN-q3-96D">
+                                        <rect key="frame" x="157" y="505" width="60" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="8v0-o7-txD"/>
+                                            <constraint firstAttribute="width" constant="60" id="Jvv-sk-KJv"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button" image="Record"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxl-ag-ebS">
+                                        <rect key="frame" x="295" y="517" width="32" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Stop"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1J-Rj-S0t">
+                                        <rect key="frame" x="40" y="517" width="57" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="playButtonTapped:" destination="BVe-cH-PDK" eventType="touchUpInside" id="n6R-hn-Sw6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4pN-q3-96D" secondAttribute="trailing" constant="158" id="FVs-CA-lt4"/>
+                                    <constraint firstItem="4pN-q3-96D" firstAttribute="leading" secondItem="i7E-4B-2X1" secondAttribute="leading" constant="157" id="WWd-nk-dgl"/>
+                                    <constraint firstAttribute="bottom" secondItem="4pN-q3-96D" secondAttribute="bottom" constant="44" id="WuW-o5-RJB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MOa-1D-OlT" firstAttribute="bottom" secondItem="i7E-4B-2X1" secondAttribute="bottom" id="OCs-NM-V3f"/>
+                            <constraint firstItem="i7E-4B-2X1" firstAttribute="top" secondItem="MOa-1D-OlT" secondAttribute="top" id="YuB-AL-IXm"/>
+                            <constraint firstItem="i7E-4B-2X1" firstAttribute="leading" secondItem="MOa-1D-OlT" secondAttribute="leading" id="Zam-J6-6NU"/>
+                            <constraint firstItem="MOa-1D-OlT" firstAttribute="trailing" secondItem="i7E-4B-2X1" secondAttribute="trailing" id="jkf-4T-1c2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MOa-1D-OlT"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraPreviewView" destination="i7E-4B-2X1" id="f3X-Yq-eEm"/>
+                        <outlet property="recordButton" destination="4pN-q3-96D" id="axz-Uj-TYc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DbR-Lt-AID" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2949.5999999999999" y="843.32833583208401"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Record" width="116" height="116"/>
+    </resources>
 </document>

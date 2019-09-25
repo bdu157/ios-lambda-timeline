@@ -110,7 +110,7 @@ class AudioCommentViewController: UIViewController, AVAudioPlayerDelegate, AVAud
             
             present(alert, animated: true, completion: nil)
         } else {
-            dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         }
     }
     
