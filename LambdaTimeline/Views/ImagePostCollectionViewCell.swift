@@ -14,6 +14,7 @@ class ImagePostCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         setupLabelBackgroundView()
     }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
