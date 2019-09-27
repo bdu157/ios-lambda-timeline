@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B129FB7233DAC5B001B1554 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B129FB6233DAC5B001B1554 /* MapViewController.swift */; };
+		0B129FB9233DB3B3001B1554 /* MyLocationAnnotation.temp_caseinsensitive_rename.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B129FB8233DB3B3001B1554 /* MyLocationAnnotation.temp_caseinsensitive_rename.swift */; };
+		0B129FBB233DB954001B1554 /* Post+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B129FBA233DB954001B1554 /* Post+Mapping.swift */; };
 		0B20EBAB233B628A009B56EA /* CameraPreiviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EBAA233B628A009B56EA /* CameraPreiviewView.swift */; };
 		0B20EBAD233B645F009B56EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EBAC233B645F009B56EA /* ViewController.swift */; };
 		0B20EBAF233B66EE009B56EA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B20EBAE233B66EE009B56EA /* CameraViewController.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B129FB6233DAC5B001B1554 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0B129FB8233DB3B3001B1554 /* MyLocationAnnotation.temp_caseinsensitive_rename.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationAnnotation.temp_caseinsensitive_rename.swift; sourceTree = "<group>"; };
+		0B129FBA233DB954001B1554 /* Post+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Mapping.swift"; sourceTree = "<group>"; };
 		0B20EBAA233B628A009B56EA /* CameraPreiviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreiviewView.swift; sourceTree = "<group>"; };
 		0B20EBAC233B645F009B56EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B20EBAE233B66EE009B56EA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B129FB5233DAC21001B1554 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0B129FB6233DAC5B001B1554 /* MapViewController.swift */,
+				0B129FB8233DB3B3001B1554 /* MyLocationAnnotation.temp_caseinsensitive_rename.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		0B20EB85233B01CF009B56EA /* Video */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +179,7 @@
 				4646378F216FFD1B00E7FF73 /* Post.swift */,
 				46CFE6FA21714E6100E7FF73 /* Author.swift */,
 				46463791216FFDD900E7FF73 /* Comment.swift */,
+				0B129FBA233DB954001B1554 /* Post+Mapping.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +217,7 @@
 			children = (
 				46A0366C2170158900E7FF73 /* SignInViewController.swift */,
 				46A0366921700F5100E7FF73 /* PostsCollectionViewController.swift */,
+				0B129FB5233DAC21001B1554 /* Map */,
 				0B764F3B23388B2600D6FAC4 /* Image */,
 				0B20EB85233B01CF009B56EA /* Video */,
 				0B764F3C23388B3200D6FAC4 /* Audio */,
@@ -393,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B129FBB233DB954001B1554 /* Post+Mapping.swift in Sources */,
 				46A0366D2170158900E7FF73 /* SignInViewController.swift in Sources */,
 				0B764F3E2338A72F00D6FAC4 /* FetchAudioCommentOperation.swift in Sources */,
 				0BBE3F7E233329E8009EAF8C /* UIImage+Scaling.swift in Sources */,
@@ -404,6 +422,7 @@
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				0BDFF95323375E3F001BEF2F /* AudioCommentsTableViewCell.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,
+				0B129FB9233DB3B3001B1554 /* MyLocationAnnotation.temp_caseinsensitive_rename.swift in Sources */,
 				46CFE6FF2171556D00E7FF73 /* ConcurrentOperation.swift in Sources */,
 				46463790216FFD1B00E7FF73 /* Post.swift in Sources */,
 				46CFE6F32170757F00E7FF73 /* User+DictionaryRepresentation.swift in Sources */,
@@ -415,6 +434,7 @@
 				4646379C2170091A00E7FF73 /* PostController.swift in Sources */,
 				464637992170048900E7FF73 /* FirebaseConvertible.swift in Sources */,
 				46A0366A21700F5100E7FF73 /* PostsCollectionViewController.swift in Sources */,
+				0B129FB7233DAC5B001B1554 /* MapViewController.swift in Sources */,
 				46D571F52173CF3E00E7FF73 /* UIImage+Ratio.swift in Sources */,
 				0B28DA812335BD9200B7ED1F /* AudioCommentViewController.swift in Sources */,
 				46463792216FFDD900E7FF73 /* Comment.swift in Sources */,

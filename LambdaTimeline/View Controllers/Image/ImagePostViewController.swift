@@ -74,6 +74,7 @@ class ImagePostViewController: ShiftableViewController {
         setImageViewHeight(with: 1.0)
         
         updateViews()
+        
     }
     
     func updateViews() {
@@ -279,5 +280,7 @@ extension ImagePostViewController: UIImagePickerControllerDelegate, UINavigation
         picker.dismiss(animated: true, completion: nil)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+    }
 }

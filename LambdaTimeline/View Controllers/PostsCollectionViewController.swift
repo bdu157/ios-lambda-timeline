@@ -167,3 +167,14 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
     private let mediaFetchQueue = OperationQueue()
     private let cache = Cache<String, Data>()
 }
+
+/*
+ 
+ coreimage anyfilter
+ same viewcontroller record the audio
+ 
+ go to next video (viewcontroller) -> save -> audio url, videourl
+ 
+ mapview to show annotationView after saving it to first viewcontroller
+ 
+ */

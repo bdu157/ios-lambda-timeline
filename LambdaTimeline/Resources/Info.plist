@@ -39,6 +39,8 @@
 	<string>In order to allow you to add photos to posts</string>
 	<key>NSCameraUsageDescription</key>
 	<string>video recorder needs to access to your library to save videos</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>In order to track user&apos;s location for image posts</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -17,8 +17,6 @@ class ImagePostDetailTableViewController: UITableViewController, AudioCommentTab
         self.tableView.reloadData()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
