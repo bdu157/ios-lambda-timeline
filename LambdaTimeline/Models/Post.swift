@@ -118,5 +118,6 @@ updated
  static private let latitudeKey = "latitude"
  
  -added Post+Mapping
+ -update postController for createPost and Post
  -updated imagePostViewController to get current latitude and longitude and pass them into createPost and Post
 */
