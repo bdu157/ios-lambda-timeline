@@ -211,8 +211,15 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Gh-xM-K0A">
                                                 <rect key="frame" x="0.0" y="105" width="345" height="30"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdN-ge-QS8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
+                                                        <state key="normal" title="-See My Location-"/>
+                                                        <connections>
+                                                            <segue destination="chU-QA-mxr" kind="show" identifier="ToSeeTheMap" id="r7p-Rv-Msk"/>
+                                                        </connections>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-V0-2Zl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
+                                                        <rect key="frame" x="156" y="0.0" width="87" height="30"/>
                                                         <state key="normal" title="NoirEffect"/>
                                                         <connections>
                                                             <action selector="noirEffect:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="2DN-V2-tWh"/>
@@ -229,14 +236,6 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdN-ge-QS8">
-                                        <rect key="frame" x="131" y="565" width="114" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="See My Location"/>
-                                        <connections>
-                                            <segue destination="chU-QA-mxr" kind="show" identifier="ToSeeTheMap" id="r7p-Rv-Msk"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PkI-rS-ua9" secondAttribute="trailing" id="1cC-FG-cAC"/>
@@ -314,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0g9-eb-qrR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="-463"/>
+            <point key="canvasLocation" x="2738" y="-467"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gdW-Je-ais">
@@ -369,7 +368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xA4-1f-Wlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-450.39999999999998" y="107.49625187406298"/>
+            <point key="canvasLocation" x="-430" y="107"/>
         </scene>
         <!--Title-->
         <scene sceneID="9zi-Aq-zJI">
@@ -594,7 +593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvo-Lg-0IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2918" y="215"/>
+            <point key="canvasLocation" x="2798" y="214"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="bJI-zZ-2GF">
@@ -632,6 +631,14 @@
                                             <action selector="playButtonTapped:" destination="BVe-cH-PDK" eventType="touchUpInside" id="n6R-hn-Sw6"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYN-Fl-xpx">
+                                        <rect key="frame" x="310" y="8" width="54" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Dismiss"/>
+                                        <connections>
+                                            <action selector="dismissButtonTapped:" destination="BVe-cH-PDK" eventType="touchUpInside" id="uGi-kv-WIf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -657,7 +664,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbR-Lt-AID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2949.5999999999999" y="843.32833583208401"/>
+            <point key="canvasLocation" x="2799" y="890"/>
         </scene>
     </scenes>
     <resources>

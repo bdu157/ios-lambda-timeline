@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import CoreImage
+import CoreLocation
 
 class ImagePostViewController: ShiftableViewController {
     
@@ -29,6 +30,9 @@ class ImagePostViewController: ShiftableViewController {
     
     @IBOutlet weak var filterStackView: UIStackView!
     
+    //location
+    let locationManager = CLLocationManager()
+    var clLocation: CLLocationCoordinate2D?
     
     //taking original image to make it smaller and easier to manupulate while making changes for its preview
     var originalimage: UIImage? {
@@ -75,6 +79,14 @@ class ImagePostViewController: ShiftableViewController {
         
         updateViews()
         
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        //get currentLocation
+        let loc = locationManager.location
+        
+        guard let latitude = loc?.coordinate.latitude,
+            let longitude = loc?.coordinate.longitude else {return}
+        clLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
     func updateViews() {
@@ -120,7 +132,7 @@ class ImagePostViewController: ShiftableViewController {
                 return
         }
         
-        postController.createPost(with: title, ofType: .image, mediaData: imageData, ratio: imageView.image?.ratio) { (success) in
+        postController.createPost(with: title, ofType: .image, mediaData: imageData, ratio: imageView.image?.ratio, geotag: self.clLocation!) { (success) in
             guard success else {
                 DispatchQueue.main.async {
                     self.presentInformationalAlertController(title: "Error", message: "Unable to create post. Try again.")

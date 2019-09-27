@@ -63,8 +63,14 @@ class CameraViewController: UIViewController {
         } else {
             recordOutput.startRecording(to: self.newRecordingURL(), recordingDelegate: self)
         }
-        
     }
+    
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
     //MARK: private method
     private func bestCamera() -> AVCaptureDevice {

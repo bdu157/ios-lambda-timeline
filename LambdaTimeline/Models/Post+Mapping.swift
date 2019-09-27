@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import MapKit
+
+extension Post: MKAnnotation {
+    var coordinate: CLLocationCoordinate2D {
+        return geotag
+    }
+    var subtitle: String? {
+        return author.displayName
+    }
+}

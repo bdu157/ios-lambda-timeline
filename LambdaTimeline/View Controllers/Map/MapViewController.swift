@@ -30,7 +30,11 @@ class MapViewController: UIViewController {
         let myLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         let myLocationAnnotation = MyLocationAnnotation(coordinate: myLocation, title: "myLocaion Baby!!")
+        
+        //addAnnotation for this to be used for MKAnnotation below
         mapView.addAnnotation(myLocationAnnotation)
+        
+        //setting the region
         mapView.setRegion(myLocationAnnotation.region, animated: true)
     }
 }
@@ -39,7 +43,7 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let myLocationAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationID") as? MKMarkerAnnotationView {
             myLocationAnnotationView.animatesWhenAdded = true
-            //myLocationAnnotationView.titleVisibility = .adaptive
+            myLocationAnnotationView.titleVisibility = .adaptive
             return myLocationAnnotationView
         } else {
             return nil

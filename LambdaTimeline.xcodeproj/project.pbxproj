@@ -177,9 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				4646378F216FFD1B00E7FF73 /* Post.swift */,
+				0B129FBA233DB954001B1554 /* Post+Mapping.swift */,
 				46CFE6FA21714E6100E7FF73 /* Author.swift */,
 				46463791216FFDD900E7FF73 /* Comment.swift */,
-				0B129FBA233DB954001B1554 /* Post+Mapping.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
