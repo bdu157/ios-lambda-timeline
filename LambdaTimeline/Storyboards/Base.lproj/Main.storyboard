@@ -211,15 +211,8 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Gh-xM-K0A">
                                                 <rect key="frame" x="0.0" y="105" width="345" height="30"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdN-ge-QS8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
-                                                        <state key="normal" title="-See My Location-"/>
-                                                        <connections>
-                                                            <segue destination="chU-QA-mxr" kind="show" identifier="ToSeeTheMap" id="r7p-Rv-Msk"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDi-V0-2Zl">
-                                                        <rect key="frame" x="156" y="0.0" width="87" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
                                                         <state key="normal" title="NoirEffect"/>
                                                         <connections>
                                                             <action selector="noirEffect:" destination="1Aw-4e-BW2" eventType="touchUpInside" id="2DN-V2-tWh"/>
@@ -236,13 +229,23 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdN-ge-QS8">
+                                        <rect key="frame" x="225" y="556" width="128" height="30"/>
+                                        <state key="normal" title="-See My Location-"/>
+                                        <connections>
+                                            <segue destination="chU-QA-mxr" kind="show" identifier="ToSeeTheMap" id="r7p-Rv-Msk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PkI-rS-ua9" secondAttribute="trailing" id="1cC-FG-cAC"/>
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="top" secondItem="9qd-If-ddw" secondAttribute="top" id="3tV-sW-NF1"/>
+                                    <constraint firstItem="QdN-ge-QS8" firstAttribute="leading" secondItem="9qd-If-ddw" secondAttribute="leading" constant="225" id="Kvh-yV-es5"/>
+                                    <constraint firstItem="QdN-ge-QS8" firstAttribute="top" secondItem="y95-ww-Xpd" secondAttribute="bottom" constant="3" id="MAX-Z5-GCk"/>
                                     <constraint firstAttribute="trailing" secondItem="y95-ww-Xpd" secondAttribute="trailing" constant="15" id="VAR-4W-ngV"/>
                                     <constraint firstItem="y95-ww-Xpd" firstAttribute="leading" secondItem="9qd-If-ddw" secondAttribute="leading" constant="15" id="WWG-79-Sfs"/>
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="leading" secondItem="9qd-If-ddw" secondAttribute="leading" id="bPK-xN-eaO"/>
+                                    <constraint firstAttribute="trailing" secondItem="QdN-ge-QS8" secondAttribute="trailing" constant="22" id="cXv-jB-UqP"/>
                                     <constraint firstAttribute="bottom" secondItem="PkI-rS-ua9" secondAttribute="bottom" id="cfV-7c-ubK"/>
                                     <constraint firstItem="PkI-rS-ua9" firstAttribute="width" secondItem="9qd-If-ddw" secondAttribute="width" id="dWh-6N-mO7"/>
                                     <constraint firstAttribute="height" priority="250" constant="603" id="qMm-7B-8rp"/>
@@ -281,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXa-A2-VJT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="-195"/>
+            <point key="canvasLocation" x="1968.8" y="-195.6521739130435"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="plb-HT-V4s">
