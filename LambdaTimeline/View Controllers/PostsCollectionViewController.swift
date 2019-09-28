@@ -167,3 +167,4 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
     private let mediaFetchQueue = OperationQueue()
     private let cache = Cache<String, Data>()
 }
+
